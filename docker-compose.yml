@@ -1,0 +1,46 @@
+services:
+  mysql:
+    restart: unless-stopped
+    container_name: "handwriting_labeling_app_mysql"
+    image: "mysql:latest"
+    ports:
+      - "${MYSQL_PORT}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: handwriting_labeling_app
+      MYSQL_USER: handwriting_labeling_app_db_user
+    volumes:
+      - "./mysql:/var/lib/mysql"
+  backend:
+    restart: unless-stopped
+    container_name: "handwriting_labeling_app_backend"
+    build: ./handwriting-labeling-app-backend
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: handwriting_labeling_app
+      MYSQL_USERNAME: handwriting_labeling_app_db_user
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+      APP_URL_ROOT: ${FRONTEND_URL}
+    ports:
+      - "${BACKEND_PORT}:8080"
+    depends_on:
+      - mysql
+  frontend:
+    restart: unless-stopped
+    container_name: "handwriting_labeling_app_frontend"
+    build:
+      context: ./handwriting-labeling-app-frontend
+      args:
+        REACT_APP_BACKEND_URL_ROOT: ${BACKEND_URL}
+    ports:
+      - "${FRONTEND_PORT}:3000"
+    depends_on:
+      - backend
+networks:
+  default:
+    driver: bridge
+volumes:
+  mysql:

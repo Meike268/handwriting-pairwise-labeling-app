@@ -1,0 +1,6 @@
+[submodule "handwriting-labeling-app-frontend"]
+	path = handwriting-labeling-app-frontend
+	url = git@github.com:LukasPieger1/handwriting-labeling-app-frontend.git
+[submodule "handwriting-labeling-app-backend"]
+	path = handwriting-labeling-app-backend
+	url = git@github.com:LukasPieger1/handwriting-labeling-app-backend.git
