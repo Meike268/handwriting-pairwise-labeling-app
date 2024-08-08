@@ -2,3 +2,6 @@
 mysql/
 public/
 .idea/
+/samples/
+/examples/
+/config/

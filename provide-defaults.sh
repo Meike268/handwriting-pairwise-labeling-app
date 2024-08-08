@@ -18,3 +18,28 @@ BACKEND_URL=https://hla.lukas-ist-ein-geiler-hund.de/api
 " \
 > "$ENV_FILE"
 fi
+
+CONFIG_FILE=$SCRIPT_DIR/config/batch_service_config.json
+if [ ! -f "$CONFIG_FILE" ]; then
+  echo \
+"{
+   \"samplesOrigin\": \"xai_sentences\",
+   \"batchSize\": 10,
+   \"minExpertAnswerCount\": 1,
+   \"targetAnswerCount\": 3,
+   \"prioritizedReferenceSentences\": [
+     {
+       \"referenceSentencesId\": 1,
+       \"priority\": 1
+     }
+   ],
+   \"prioritizedQuestions\": [
+     {
+       \"questionId\": 1,
+       \"priority\": 1
+     }
+   ]
+ }
+" \
+> "$CONFIG_FILE"
+fi
