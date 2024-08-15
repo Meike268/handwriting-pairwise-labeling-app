@@ -24,7 +24,7 @@ services:
       MYSQL_USERNAME: handwriting_labeling_app_db_user
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
-      APP_URL_ROOT: ${FRONTEND_URL}
+      APP_URL_ROOTS: ${FRONTEND_URLS}
     volumes:
       - "./config/batch_service_config.json:/usr/handwriting-labeling-app/src/main/resources/batch_service_config.json"
       - "./samples:/usr/handwriting-labeling-app/src/main/resources/public/files/images/samples"

@@ -13,7 +13,7 @@ MYSQL_PORT=3370
 BACKEND_PORT=8070
 FRONTEND_PORT=3070
 
-FRONTEND_URL=https://hla.lukas-ist-ein-geiler-hund.de
+FRONTEND_URLS=https://hla.lukas-ist-ein-geiler-hund.de,https://labeling.stabilodigital.de
 BACKEND_URL=https://hla.lukas-ist-ein-geiler-hund.de/api
 " \
 > "$ENV_FILE"
