@@ -11,3 +11,5 @@ $SCRIPT_DIR/_update_files.sh
 docker-compose build
 docker-compose down
 docker-compose up -d
+
+docker image prune -f
