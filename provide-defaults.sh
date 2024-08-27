@@ -19,6 +19,26 @@ BACKEND_URL=https://hla.lukas-ist-ein-geiler-hund.de/api
 > "$ENV_FILE"
 fi
 
+UPDATE_SCRIPT_FILE=_update_files.sh
+if [ ! -f "$UPDATE_SCRIPT_FILE" ]; then
+  echo \
+"#!/bin/bash
+
+echo 'TODO: Please provide a way to update the sample images automatically'
+" \
+> "$UPDATE_SCRIPT_FILE"
+fi
+
+SAMPLES_DIR=samples
+if [ ! -d "$SAMPLES_DIR" ]; then
+  mkdir $SAMPLES_DIR
+fi
+
+EXAMPLES_DIR=examples
+if [ ! -d "$EXAMPLES_DIR" ]; then
+  mkdir $EXAMPLES_DIR
+fi
+
 CONFIG_FILE=$SCRIPT_DIR/config/batch_service_config.json
 if [ ! -f "$CONFIG_FILE" ]; then
   echo \
