@@ -6,3 +6,4 @@ public/
 /examples/
 /config/
 _update_files.sh
+./.venv
