@@ -15,6 +15,8 @@ FRONTEND_PORT=3070
 
 FRONTEND_URLS=https://hla.lukas-ist-ein-geiler-hund.de,https://labeling.stabilodigital.de
 BACKEND_URL=https://hla.lukas-ist-ein-geiler-hund.de/api
+REACT_APP_BACKEND_URL_ROOT=http://localhost:8080
+
 " \
 > "$ENV_FILE"
 fi
