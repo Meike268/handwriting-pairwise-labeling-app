@@ -13,10 +13,8 @@ MYSQL_PORT=3370
 BACKEND_PORT=8070
 FRONTEND_PORT=3070
 
-FRONTEND_URLS=https://hla.lukas-ist-ein-geiler-hund.de,https://labeling.stabilodigital.de
-BACKEND_URL=https://hla.lukas-ist-ein-geiler-hund.de/api
-REACT_APP_BACKEND_URL_ROOT=http://localhost:8080
-
+FRONTEND_URLS=
+BACKEND_URL=
 " \
 > "$ENV_FILE"
 fi
@@ -46,21 +44,12 @@ if [ ! -f "$CONFIG_FILE" ]; then
   echo \
 "{
    \"samplesOrigin\": \"xai_sentences\",
-   \"batchSize\": 10,
-   \"targetExpertAnswerCount\": 1,
+   \"batchSize\": 99,
+   \"batchCount\": 25,
+   \"targetExpertAnswerCount\": 0,
    \"targetAnswerCount\": 3,
-   \"prioritizedReferenceSentences\": [
-     {
-       \"referenceSentencesId\": 1,
-       \"priority\": 1
-     }
-   ],
-   \"prioritizedQuestions\": [
-     {
-       \"questionId\": 1,
-       \"priority\": 1
-     }
-   ]
+   \"prioritizedReferenceSentences\": [],
+   \"prioritizedQuestions\": []
  }
 " \
 > "$CONFIG_FILE"
