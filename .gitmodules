@@ -1,6 +1,1 @@
-[submodule "handwriting-labeling-app-frontend"]
-	path = handwriting-labeling-app-frontend
-	url =  https://github.com/Meike268/handwriting-pairwise-labeling-app-frontend.git
-[submodule "handwriting-labeling-app-backend"]
-	path = handwriting-labeling-app-backend
-	url = https://github.com/Meike268/handwriting-pairwise-labeling-app-backend.git
+
