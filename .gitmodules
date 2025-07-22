@@ -1,1 +1,4 @@
 
+[submodule "handwriting-pairwise-labeling-app-backend"]
+	path = handwriting-pairwise-labeling-app-backend
+	url = https://github.com/Meike268/handwriting-pairwise-labeling-app-backend
