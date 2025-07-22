@@ -44,10 +44,9 @@ if [ ! -f "$CONFIG_FILE" ]; then
   echo \
 "{
    \"samplesOrigin\": \"xai_sentences\",
-   \"batchSize\": 99,
-   \"batchCount\": 25,
+   \"batchSize\": 20,
    \"targetExpertAnswerCount\": 0,
-   \"targetAnswerCount\": 3,
+   \"targetAnswerCount\": 1,
    \"prioritizedReferenceSentences\": [],
    \"prioritizedQuestions\": []
  }
