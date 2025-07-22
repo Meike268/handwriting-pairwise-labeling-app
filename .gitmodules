@@ -2,3 +2,6 @@
 [submodule "handwriting-pairwise-labeling-app-backend"]
 	path = handwriting-pairwise-labeling-app-backend
 	url = https://github.com/Meike268/handwriting-pairwise-labeling-app-backend
+[submodule "handwriting-pairwise-labeling-app-frontend"]
+	path = handwriting-pairwise-labeling-app-frontend
+	url = https://github.com/Meike268/handwriting-pairwise-labeling-app-frontend
