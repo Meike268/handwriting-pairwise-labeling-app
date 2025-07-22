@@ -9,36 +9,43 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_DATABASE: handwriting_labeling_app
-      MYSQL_USER: handwriting_labeling_app_db_user
+      MYSQL_DATABASE: handwriting_pairwise_labeling_app
+      MYSQL_USER: db_user
     volumes:
       - "./mysql:/var/lib/mysql"
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}" ]
+      timeout: 20s
+      retries: 10
+
   backend:
     restart: unless-stopped
     container_name: "handwriting_labeling_app_backend"
-    build: ./handwriting-labeling-app-backend
+    build: ./handwriting-pairwise-labeling-app-backend
     environment:
       MYSQL_HOST: mysql
       MYSQL_PORT: 3306
-      MYSQL_DATABASE: handwriting_labeling_app
-      MYSQL_USERNAME: handwriting_labeling_app_db_user
+      MYSQL_DATABASE: handwriting_pairwise_labeling_app
+      MYSQL_USERNAME: db_user
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
       APP_URL_ROOTS: ${FRONTEND_URLS}
     volumes:
       - "./config/batch_service_config.json:/usr/handwriting-labeling-app/src/main/resources/batch_service_config.json"
       - "./samples:/usr/handwriting-labeling-app/src/main/resources/public/files/images/samples"
+      - "./samples_all_pairs.csv:/usr/handwriting-labeling-app/src/main/resources/public/files/samples_all_pairs.csv:ro"
       - "./examples:/usr/handwriting-labeling-app/src/main/resources/public/files/images/examples"
       - "./handwriting-pairwise-labeling-app-backend/src/main/kotlin/:/usr/handwriting-labeling-app/src/main/kotlin/:ro"
     ports:
       - "${BACKEND_PORT}:8080"
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
   frontend:
     restart: unless-stopped
     container_name: "handwriting_labeling_app_frontend"
     build:
-      context: ./handwriting-labeling-app-frontend
+      context: ./handwriting-pairwise-labeling-app-frontend
       args:
         REACT_APP_BACKEND_URL_ROOT: ${BACKEND_URL}
     ports:
